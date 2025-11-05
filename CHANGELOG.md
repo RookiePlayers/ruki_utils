@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to **ruki_utils** will be documented in this file.
 
+## [0.1.1] - 2025-11-05
+Nothing changed, just housekeeping.
+
 ## [0.1.0] - 2025-11-05
 ### Added
 - `ScreenUtils` singleton with responsive scaling for sizes, fonts, icons, paddings, offsets, and alignments.
