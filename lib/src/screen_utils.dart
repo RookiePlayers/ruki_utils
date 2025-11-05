@@ -1,6 +1,7 @@
 // lib/ruki_utils.dart
 import 'dart:math';
-import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
+import 'package:flutter/foundation.dart'
+    show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/widgets.dart';
 
 /// Responsive utilities for sizing, typography, spacing and platform checks.
@@ -34,7 +35,8 @@ class ScreenUtils with WidgetsBindingObserver {
   double fontMultiplierTablet;
   double iconMultiplierPhone;
   double iconMultiplierTablet;
-  double alignmentTabletBias; // 0..1 (drifts alignments toward center on tablets)
+  double
+  alignmentTabletBias; // 0..1 (drifts alignments toward center on tablets)
 
   bool _listeningForMetrics = false;
 
@@ -77,11 +79,16 @@ class ScreenUtils with WidgetsBindingObserver {
     final s = ScreenUtils.instance;
     if (baseWidth != null) s._baseWidth = baseWidth;
     if (baseHeight != null) s._baseHeight = baseHeight;
-    if (fontMultiplierPhone != null) s.fontMultiplierPhone = fontMultiplierPhone;
-    if (fontMultiplierTablet != null) s.fontMultiplierTablet = fontMultiplierTablet;
-    if (iconMultiplierPhone != null) s.iconMultiplierPhone = iconMultiplierPhone;
-    if (iconMultiplierTablet != null) s.iconMultiplierTablet = iconMultiplierTablet;
-    if (alignmentTabletBias != null) s.alignmentTabletBias = alignmentTabletBias.clamp(0.0, 1.0);
+    if (fontMultiplierPhone != null)
+      s.fontMultiplierPhone = fontMultiplierPhone;
+    if (fontMultiplierTablet != null)
+      s.fontMultiplierTablet = fontMultiplierTablet;
+    if (iconMultiplierPhone != null)
+      s.iconMultiplierPhone = iconMultiplierPhone;
+    if (iconMultiplierTablet != null)
+      s.iconMultiplierTablet = iconMultiplierTablet;
+    if (alignmentTabletBias != null)
+      s.alignmentTabletBias = alignmentTabletBias.clamp(0.0, 1.0);
 
     s._recomputeFromCurrentView();
 
@@ -146,10 +153,12 @@ class ScreenUtils with WidgetsBindingObserver {
   double scale(double value) => value * scaleFactor;
 
   /// Fonts
-  double font(double value) => scale(value * (isTablet ? fontMultiplierTablet : fontMultiplierPhone));
+  double font(double value) =>
+      scale(value * (isTablet ? fontMultiplierTablet : fontMultiplierPhone));
 
   /// Icons
-  double icon(double value) => scale(value * (isTablet ? iconMultiplierTablet : iconMultiplierPhone));
+  double icon(double value) =>
+      scale(value * (isTablet ? iconMultiplierTablet : iconMultiplierPhone));
 
   /// Offsets (e.g., animated positions)
   Offset offset(double dx, double dy) => Offset(scale(dx), scale(dy));
@@ -179,13 +188,16 @@ class ScreenUtils with WidgetsBindingObserver {
 
   // ---- Safe-area helpers -----------------------------------------------------
 
-  EdgeInsets viewPaddingOf(BuildContext context) => MediaQuery.viewPaddingOf(context);
-  EdgeInsets viewInsetsOf(BuildContext context) => MediaQuery.viewInsetsOf(context);
+  EdgeInsets viewPaddingOf(BuildContext context) =>
+      MediaQuery.viewPaddingOf(context);
+  EdgeInsets viewInsetsOf(BuildContext context) =>
+      MediaQuery.viewInsetsOf(context);
 
   // ---- Platform helpers (web-safe) ------------------------------------------
 
   bool get isWeb => kIsWeb;
-  bool get isAndroid => !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+  bool get isAndroid =>
+      !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
   bool get isIos => !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
   bool get isTV {
     // Flutter doesn't expose TV explicitly; adapt if you target Apple TV/Android TV.
@@ -217,6 +229,7 @@ extension ScreenNumExtensions on num {
 
   /// Percentage-of-width (0..1) => logical pixels
   double get vw => ScreenUtils.instance.wPct(toDouble());
+
   /// Percentage-of-height (0..1) => logical pixels
   double get vh => ScreenUtils.instance.hPct(toDouble());
 }
@@ -227,11 +240,11 @@ extension ScreenOffsetExtensions on Offset {
 
 extension ScreenEdgeInsetsExtensions on EdgeInsets {
   EdgeInsets get responsive => ScreenUtils.instance.padding(
-        left: left,
-        top: top,
-        right: right,
-        bottom: bottom,
-      );
+    left: left,
+    top: top,
+    right: right,
+    bottom: bottom,
+  );
 }
 
 extension ScreenAlignmentExtensions on Alignment {
