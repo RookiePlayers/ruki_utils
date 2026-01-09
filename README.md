@@ -22,6 +22,7 @@ Scale widgets, text, icons, paddings, and alignments consistently across phones,
 - 🧱 **EdgeInsets / Alignment / Offset** responsive extensions.
 - 🧰 **Configurable baseline** & multipliers via `ScreenUtils.configure(...)`.
 - 🔄 **Live updates** (optional) on rotation/resize.
+- 🎨 **Color helpers**: shade/tint, contrast text, and hex utilities.
 
 ---
 
@@ -84,6 +85,22 @@ class MyApp extends StatelessWidget {
               style: TextStyle(fontSize: 16.responsiveFont),
             ),
           ),
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6)
+                .responsive,
+            decoration: BoxDecoration(
+              color: Colors.teal.withTint(0.2),
+              borderRadius: BorderRadius.circular(8.responsive),
+            ),
+            child: Text(
+              'Tinted color + contrast text',
+              style: TextStyle(
+                color: Colors.teal.withTint(0.2).contrastText,
+                fontSize: 12.responsiveFont,
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -112,6 +129,19 @@ class MyApp extends StatelessWidget {
 - `viewPaddingOf(context)` / `viewInsetsOf(context)` → `EdgeInsets`
 - Dimensions: `width`, `height`
 - Flags: `isTablet`, `isWeb`, `isAndroid`, `isIos`, `isPad`
+
+### Color utilities
+
+```dart
+// extension helpers
+final color = Colors.blue.withShade(0.15);
+final readable = color.contrastText;
+final hex = color.toHex();
+
+// static helpers
+final fromHex = ColorExtention.fromHex('#1e88e5');
+final named = ColorMisc.nameToColor('Ruki');
+```
 
 ### Configuration
 
@@ -200,7 +230,7 @@ dev_dependencies:
 flutter test
 ```
 
-> A sample suite is provided in `test/screen_utils_test.dart`, covering scaling, tablet detection, percent helpers, alignment bias, and safe-area helpers.
+> A sample suite is provided in `test/ruki_utils_test.dart`, covering scaling, tablet detection, percent helpers, alignment bias, and safe-area helpers.
 
 ---
 

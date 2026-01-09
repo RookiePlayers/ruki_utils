@@ -35,6 +35,7 @@ class ExampleHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Safe-area info
     final safePadding = ScreenUtils.instance.viewPaddingOf(context);
+    final sampleColor = Colors.teal.withTint(0.2);
 
     return Scaffold(
       appBar: AppBar(
@@ -71,6 +72,22 @@ class ExampleHomePage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14.responsiveFont,
                 color: Colors.white70,
+              ),
+            ),
+            SizedBox(height: 20.responsive),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6)
+                  .responsive,
+              decoration: BoxDecoration(
+                color: sampleColor,
+                borderRadius: BorderRadius.circular(8.responsive),
+              ),
+              child: Text(
+                'Color hex: ${sampleColor.toHex()}',
+                style: TextStyle(
+                  color: sampleColor.contrastText,
+                  fontSize: 12.responsiveFont,
+                ),
               ),
             ),
             SizedBox(height: 20.responsive),
