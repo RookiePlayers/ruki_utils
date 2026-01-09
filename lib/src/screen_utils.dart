@@ -79,16 +79,21 @@ class ScreenUtils with WidgetsBindingObserver {
     final s = ScreenUtils.instance;
     if (baseWidth != null) s._baseWidth = baseWidth;
     if (baseHeight != null) s._baseHeight = baseHeight;
-    if (fontMultiplierPhone != null)
+    if (fontMultiplierPhone != null) {
       s.fontMultiplierPhone = fontMultiplierPhone;
-    if (fontMultiplierTablet != null)
+    }
+    if (fontMultiplierTablet != null) {
       s.fontMultiplierTablet = fontMultiplierTablet;
-    if (iconMultiplierPhone != null)
+    }
+    if (iconMultiplierPhone != null) {
       s.iconMultiplierPhone = iconMultiplierPhone;
-    if (iconMultiplierTablet != null)
+    }
+    if (iconMultiplierTablet != null) {
       s.iconMultiplierTablet = iconMultiplierTablet;
-    if (alignmentTabletBias != null)
+    }
+    if (alignmentTabletBias != null) {
       s.alignmentTabletBias = alignmentTabletBias.clamp(0.0, 1.0);
+    }
 
     s._recomputeFromCurrentView();
 
